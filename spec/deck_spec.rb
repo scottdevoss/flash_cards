@@ -9,7 +9,6 @@ RSpec.describe Deck do
   cards = [card_1, card_2, card_3]
   it 'exists' do
     deck = Deck.new(cards)
-
     expect(deck).to be_instance_of(Deck)
   end 
 
@@ -26,6 +25,11 @@ RSpec.describe Deck do
   it 'contains cards with a specific category' do
     deck = Deck.new(cards) 
     expect(deck.cards_in_category(:STEM)).to eq([card_2, card_3])
+  end 
+
+  it 'contains cards with a specific category' do
+    deck = Deck.new(cards) 
+    expect(deck.cards_in_category(:Geography)).to eq([card_1])
   end 
 
   it 'has no cards with a specific category' do

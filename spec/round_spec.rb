@@ -68,7 +68,40 @@ RSpec.describe Round do
     expect(round.current_card).to eq(card_2)
   end
 
-  
+  it 'can store the number of turns and correct answers' do
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_turn = round.take_turn("Juneau")
+    expect(round.turns.count).to eq(2)
+  end
 
+  xit 'can give feedback from turns taken' do
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_turn = round.take_turn("Juneau")
+    expect(round.turns.last.feedback).to eq("Incorrect.")
+  end
+
+  xit 'can find number of correct answers by category' do
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_turn = round.take_turn("Juneau")
+    expect(round.number_correct_by_category(:Geography)).to eq(1)
+  end
+
+  xit 'can find percent correct' do
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_turn = round.take_turn("Juneau")
+    expect(round.percent_correct).to eq(50)
+  end
+
+
+  xit 'can find percent correct by category' do
+    deck = Deck.new([card_1, card_2, card_3])
+    round = Round.new(deck)
+    new_turn = round.take_turn("Juneau")
+    expect(round.percent_correct_by_category(:Geography)).to eq(100)
+  end
 
 end 
